@@ -88,6 +88,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/megafetis/vue3-treeselect.git"
+    "url": "git+https://github.com/naderalgoriza/tree-select-vue3.git"
   }
 }
