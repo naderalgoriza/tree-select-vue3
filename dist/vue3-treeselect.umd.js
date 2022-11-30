@@ -4510,15 +4510,15 @@ function createAsyncOptionsStates() {
   return {
     isLoaded: false,
     isLoading: false,
-    loadingError: ''
+    loadingError: ""
   };
 }
 
 function stringifyOptionPropValue(value) {
-  if (typeof value === 'string') return value;
-  if (typeof value === 'number' && !isNaN_isNaN(value)) return value + ''; // istanbul ignore next
+  if (typeof value === "string") return value;
+  if (typeof value === "number" && !isNaN_isNaN(value)) return value + ""; // istanbul ignore next
 
-  return '';
+  return "";
 }
 
 function match(enableFuzzyMatch, needle, haystack) {
@@ -4677,7 +4677,7 @@ var instanceId = 0;
      */
     clearAllText: {
       type: String,
-      default: 'Clear all'
+      default: "Clear all"
     },
 
     /**
@@ -4695,7 +4695,7 @@ var instanceId = 0;
      */
     clearValueText: {
       type: String,
-      default: 'Clear value'
+      default: "Clear value"
     },
 
     /**
@@ -4738,7 +4738,7 @@ var instanceId = 0;
      */
     delimiter: {
       type: String,
-      default: ','
+      default: ","
     },
 
     /**
@@ -4789,7 +4789,7 @@ var instanceId = 0;
     /**
      * Will be passed with all events as the last param.
      * Useful for identifying events origin.
-    */
+     */
     instanceId: {
       // Add two trailing "$" to distinguish from explictly specified ids.
       default: function _default() {
@@ -4800,7 +4800,7 @@ var instanceId = 0;
 
     /**
      * Joins multiple values into a single form field with the `delimiter` (legacy mode).
-    */
+     */
     joinValues: {
       type: Boolean,
       default: false
@@ -4832,7 +4832,7 @@ var instanceId = 0;
      */
     loadingText: {
       type: String,
-      default: 'Loading...'
+      default: "Loading..."
     },
 
     /**
@@ -4848,7 +4848,7 @@ var instanceId = 0;
      */
     matchKeys: {
       type: Array,
-      default: constant_default()(['label'])
+      default: constant_default()(["label"])
     },
 
     /**
@@ -4879,7 +4879,7 @@ var instanceId = 0;
      */
     noChildrenText: {
       type: String,
-      default: 'No sub-options.'
+      default: "No sub-options."
     },
 
     /**
@@ -4887,7 +4887,7 @@ var instanceId = 0;
      */
     noOptionsText: {
       type: String,
-      default: 'No options available.'
+      default: "No options available."
     },
 
     /**
@@ -4895,7 +4895,7 @@ var instanceId = 0;
      */
     noResultsText: {
       type: String,
-      default: 'No results found...'
+      default: "No results found..."
     },
 
     /**
@@ -4921,9 +4921,9 @@ var instanceId = 0;
      */
     openDirection: {
       type: String,
-      default: 'auto',
+      default: "auto",
       validator: function validator(value) {
-        var acceptableValues = ['auto', 'top', 'bottom', 'above', 'below'];
+        var acceptableValues = ["auto", "top", "bottom", "above", "below"];
         return includes(acceptableValues, value);
       }
     },
@@ -4957,7 +4957,7 @@ var instanceId = 0;
      */
     placeholder: {
       type: String,
-      default: 'Select...'
+      default: "Select..."
     },
 
     /**
@@ -4973,7 +4973,7 @@ var instanceId = 0;
      */
     retryText: {
       type: String,
-      default: 'Retry?'
+      default: "Retry?"
     },
 
     /**
@@ -4981,7 +4981,7 @@ var instanceId = 0;
      */
     retryTitle: {
       type: String,
-      default: 'Click to retry'
+      default: "Click to retry"
     },
 
     /**
@@ -5005,7 +5005,7 @@ var instanceId = 0;
      */
     searchPromptText: {
       type: String,
-      default: 'Type to search...'
+      default: "Type to search..."
     },
 
     /**
@@ -5100,7 +5100,7 @@ var instanceId = 0;
      */
     valueFormat: {
       type: String,
-      default: 'id'
+      default: "id"
     },
 
     /**
@@ -5117,7 +5117,7 @@ var instanceId = 0;
         // Is the control focused?
         isFocused: false,
         // User entered search query - value of the input.
-        searchQuery: ''
+        searchQuery: ""
       },
       menu: {
         // Is the menu opened?
@@ -5127,7 +5127,7 @@ var instanceId = 0;
         // The scroll position before last menu closing.
         lastScrollPosition: 0,
         // Which direction to open the menu.
-        placement: 'bottom'
+        placement: "bottom"
       },
       forest: {
         // Normalized options.
@@ -5278,7 +5278,7 @@ var instanceId = 0;
       // Vue doesn't allow setting default prop value based on another prop value.
       // So use computed property as a workaround.
       // https://github.com/vuejs/vue/issues/6358
-      return typeof this.showCountOnSearch === 'boolean' ? this.showCountOnSearch : this.showCount;
+      return typeof this.showCountOnSearch === "boolean" ? this.showCountOnSearch : this.showCount;
     },
 
     /**
@@ -5315,7 +5315,7 @@ var instanceId = 0;
       // Vue would trigger this watcher when `newValue` and `oldValue` are shallow-equal.
       // We emit the `input` event only when the value actually changes.
 
-      if (hasChanged) this.$emit('update:modelValue', this.getValue(), this.getInstanceId());
+      if (hasChanged) this.$emit("update:modelValue", this.getValue(), this.getInstanceId());
     },
     matchKeys: function matchKeys() {
       this.initialize();
@@ -5336,14 +5336,14 @@ var instanceId = 0;
       deep: true,
       immediate: true
     },
-    'trigger.searchQuery': function triggerSearchQuery() {
+    "trigger.searchQuery": function triggerSearchQuery() {
       if (this.async) {
         this.handleRemoteSearch();
       } else {
         this.handleLocalSearch();
       }
 
-      this.$emit('search-change', this.trigger.searchQuery, this.getInstanceId());
+      this.$emit("search-change", this.trigger.searchQuery, this.getInstanceId());
     },
     value: function value() {
       var nodeIdsFromValue = this.extractCheckedNodeIdsFromValue();
@@ -5378,7 +5378,7 @@ var instanceId = 0;
       }
 
       if (!this.flat) {
-        var propNames = ['autoSelectAncestors', 'autoSelectDescendants', 'autoDeselectAncestors', 'autoDeselectDescendants'];
+        var propNames = ["autoSelectAncestors", "autoSelectDescendants", "autoDeselectAncestors", "autoDeselectDescendants"];
         propNames.forEach(function (propName) {
           warning(function () {
             return !_this3[propName];
@@ -5417,7 +5417,7 @@ var instanceId = 0;
     getValue: function getValue() {
       var _this4 = this;
 
-      if (this.valueFormat === 'id') {
+      if (this.valueFormat === "id") {
         return this.multiple ? this.internalValue.slice() : this.internalValue[0];
       }
 
@@ -5463,7 +5463,7 @@ var instanceId = 0;
 
       if (this.modelValue == null) return [];
 
-      if (this.valueFormat === 'id') {
+      if (this.valueFormat === "id") {
         return this.multiple ? this.modelValue.slice() : [this.modelValue];
       }
 
@@ -5480,7 +5480,7 @@ var instanceId = 0;
         id: id
       };
 
-      if (this.valueFormat === 'id') {
+      if (this.valueFormat === "id") {
         return defaultNode;
       }
 
@@ -5565,7 +5565,7 @@ var instanceId = 0;
     },
     isSelected: function isSelected(node) {
       // whether a node is selected (single-select mode) or fully-checked (multi-select mode)
-      return this.forest.selectedNodeMap[node.id] === true;
+      return node && this.forest.selectedNodeMap[node.id] === true;
     },
     traverseDescendantsBFS: function traverseDescendantsBFS(parentNode, callback) {
       // istanbul ignore if
@@ -5617,13 +5617,13 @@ var instanceId = 0;
     },
     toggleClickOutsideEvent: function toggleClickOutsideEvent(enabled) {
       if (enabled) {
-        document.addEventListener('mousedown', this.handleClickOutside, false);
+        document.addEventListener("mousedown", this.handleClickOutside, false);
       } else {
-        document.removeEventListener('mousedown', this.handleClickOutside, false);
+        document.removeEventListener("mousedown", this.handleClickOutside, false);
       }
     },
     getValueContainer: function getValueContainer() {
-      return this.$refs.control.$refs['value-container'];
+      return this.$refs.control.$refs["value-container"];
     },
     getInput: function getInput() {
       return this.getValueContainer().$refs.input;
@@ -5696,7 +5696,7 @@ var instanceId = 0;
         }
       });
       var lowerCasedSearchQuery = searchQuery.trim().toLocaleLowerCase();
-      var splitSearchQuery = lowerCasedSearchQuery.replace(/\s+/g, ' ').split(' ');
+      var splitSearchQuery = lowerCasedSearchQuery.replace(/\s+/g, " ").split(" ");
       this.traverseAllNodesDFS(function (node) {
         if (_this11.searchNested && splitSearchQuery.length > 1) {
           node.isMatched = splitSearchQuery.every(function (filterValue) {
@@ -5743,7 +5743,7 @@ var instanceId = 0;
         _this12.resetHighlightedOptionWhenNecessary(true);
       };
 
-      if ((searchQuery === '' || this.cacheOptions) && entry.isLoaded) {
+      if ((searchQuery === "" || this.cacheOptions) && entry.isLoaded) {
         return done();
       }
 
@@ -5758,7 +5758,7 @@ var instanceId = 0;
         start: function start() {
           entry.isLoading = true;
           entry.isLoaded = false;
-          entry.loadingError = '';
+          entry.loadingError = "";
         },
         succeed: function succeed(options) {
           entry.isLoaded = true;
@@ -5794,7 +5794,7 @@ var instanceId = 0;
         deep: true
       });
 
-      if (searchQuery === '') {
+      if (searchQuery === "") {
         if (Array.isArray(this.defaultOptions)) {
           entry.options = this.defaultOptions;
           entry.isLoaded = true;
@@ -5839,7 +5839,7 @@ var instanceId = 0;
     getMenu: function getMenu() {
       var ref = this.appendToBody ? this.$refs.portal.portalTarget : this;
       var $menu = ref.$refs.menu.$refs.menu;
-      return $menu && $menu.nodeName !== '#comment' ? $menu : null;
+      return $menu && $menu.nodeName !== "#comment" ? $menu : null;
     },
     setCurrentHighlightedOption: function setCurrentHighlightedOption(node) {
       var _this14 = this;
@@ -5902,7 +5902,7 @@ var instanceId = 0;
       this.setCurrentHighlightedOption(this.getNode(last));
     },
     resetSearchQuery: function resetSearchQuery() {
-      this.trigger.searchQuery = '';
+      this.trigger.searchQuery = "";
     },
     closeMenu: function closeMenu() {
       if (!this.menu.isOpen || !this.disabled && this.alwaysOpen) return;
@@ -5910,7 +5910,7 @@ var instanceId = 0;
       this.menu.isOpen = false;
       this.toggleClickOutsideEvent(false);
       this.resetSearchQuery();
-      this.$emit('close', this.getValue(), this.getInstanceId());
+      this.$emit("close", this.getValue(), this.getInstanceId());
     },
     openMenu: function openMenu() {
       if (this.disabled || this.menu.isOpen) return;
@@ -5919,7 +5919,7 @@ var instanceId = 0;
       this.$nextTick(this.restoreMenuScrollPosition);
       if (!this.options && !this.async) this.loadRootOptions();
       this.toggleClickOutsideEvent(true);
-      this.$emit('open', this.getInstanceId());
+      this.$emit("open", this.getInstanceId());
     },
     toggleMenu: function toggleMenu() {
       if (this.menu.isOpen) {
@@ -6003,7 +6003,7 @@ var instanceId = 0;
           return _objectSpread2(_objectSpread2({}, prev), {}, _defineProperty({}, key, stringifyOptionPropValue(node[key]).toLocaleLowerCase()));
         }, {});
 
-        var nestedSearchLabel = isRootNode ? lowerCased.label : parentNode.nestedSearchLabel + ' ' + lowerCased.label; // this.$ set(this.forest.nodeMap, id, createMap())
+        var nestedSearchLabel = isRootNode ? lowerCased.label : parentNode.nestedSearchLabel + " " + lowerCased.label; // this.$ set(this.forest.nodeMap, id, createMap())
 
         _this16.forest.nodeMap[id] = createMap();
         var normalized = _this16.forest.nodeMap[id];
@@ -6053,7 +6053,7 @@ var instanceId = 0;
           //   ? isDefaultExpanded
           //   : level < this.defaultExpandLevel)
 
-          normalized.isExpanded = typeof isDefaultExpanded === 'boolean' ? isDefaultExpanded : level < _this16.defaultExpandLevel; // this.$ set(normalized, 'hasMatchedDescendants', false)
+          normalized.isExpanded = typeof isDefaultExpanded === "boolean" ? isDefaultExpanded : level < _this16.defaultExpandLevel; // this.$ set(normalized, 'hasMatchedDescendants', false)
           // this.$ set(normalized, 'hasDisabledDescendants', false)
           // this.$ set(normalized, 'isExpandedOnSearch', false)
           // this.$ set(normalized, 'showAllChildrenOnSearch', false)
@@ -6080,7 +6080,7 @@ var instanceId = 0;
             ancestor.isExpanded = true;
           });
 
-          if (!isLoaded && typeof _this16.loadOptions !== 'function') {
+          if (!isLoaded && typeof _this16.loadOptions !== "function") {
             warning(function () {
               return false;
             }, function () {
@@ -6152,7 +6152,7 @@ var instanceId = 0;
         },
         start: function start() {
           _this17.rootOptionsStates.isLoading = true;
-          _this17.rootOptionsStates.loadingError = '';
+          _this17.rootOptionsStates.loadingError = "";
         },
         succeed: function succeed() {
           _this17.rootOptionsStates.isLoaded = true; // Wait for `options` being re-initialized.
@@ -6190,7 +6190,7 @@ var instanceId = 0;
         },
         start: function start() {
           _this18.getNode(id).childrenStates.isLoading = true;
-          _this18.getNode(id).childrenStates.loadingError = '';
+          _this18.getNode(id).childrenStates.loadingError = "";
         },
         succeed: function succeed() {
           _this18.getNode(id).childrenStates.isLoaded = true;
@@ -6258,7 +6258,7 @@ var instanceId = 0;
       warning(function () {
         return !(node.children === undefined && node.isBranch === true);
       }, function () {
-        return 'Are you meant to declare an unloaded branch node? ' + '`isBranch: true` is no longer supported, please use `children: null` instead.';
+        return "Are you meant to declare an unloaded branch node? " + "`isBranch: true` is no longer supported, please use `children: null` instead.";
       });
     },
     select: function select(node) {
@@ -6281,9 +6281,9 @@ var instanceId = 0;
       this.buildForestState();
 
       if (nextState) {
-        this.$emit('select', node.raw, this.getInstanceId());
+        this.$emit("select", node.raw, this.getInstanceId());
       } else {
-        this.$emit('deselect', node.raw, this.getInstanceId());
+        this.$emit("deselect", node.raw, this.getInstanceId());
       }
 
       if (this.localSearch.active && nextState && (this.single || this.clearOnSelect)) {
@@ -6304,9 +6304,9 @@ var instanceId = 0;
       if (this.hasValue) {
         if (this.single || this.allowClearingDisabled) {
           this.forest.selectedNodeIds = [];
-        } else
-          /* if (this.multiple && !this.allowClearingDisabled) */
-          {
+        }
+        /* if (this.multiple && !this.allowClearingDisabled) */
+        else {
             this.forest.selectedNodeIds = this.forest.selectedNodeIds.filter(function (nodeId) {
               return _this20.getNode(nodeId).isDisabled;
             });
