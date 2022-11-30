@@ -56,13 +56,13 @@
     "vue": "^3.0.0"
   },
   "bugs": {
-    "url": "https://github.com/megafetis/vue3-treeselect/issues"
+    "url": "https://github.com/naderalgoriza/tree-select-vue3/issues"
   },
   "browserslist": [
     "Android >= 4.0",
     "iOS >= 8"
   ],
-  "homepage": "https://github.com/megafetis/vue3-treeselect",
+  "homepage": "https://github.com/naderalgoriza/tree-select-vue3",
   "files": [
     "dist/*.js",
     "dist/*.css",
