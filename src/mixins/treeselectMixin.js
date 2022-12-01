@@ -2009,6 +2009,17 @@ export default {
       }
     },
 
+    selectNodes(nodesIds) {
+      const isArray = Array.isArray(nodesIds);
+      if (!isArray)
+        throw `expected nodesIds to be an Array but got ${typeof nodesIds}`;
+
+      nodesIds.forEach((nodeId) => {
+        const node = this.forest.nodeMap[nodeId];
+        this.select(node);
+      });
+    },
+
     clear() {
       if (this.hasValue) {
         if (this.single || this.allowClearingDisabled) {

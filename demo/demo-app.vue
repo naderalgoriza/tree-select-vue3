@@ -1,6 +1,7 @@
 <template>
   <div>
     <vue-treeselect
+      ref="treeselect"
       :multiple="true"
       :options="[treeData]"
       noResultsText="No results..."
@@ -18,11 +19,12 @@
   </div>
 </template>
 <script>
-import { defineComponent, ref, reactive } from "vue";
+import { defineComponent, ref, reactive, onMounted } from "vue";
 
 export default defineComponent({
   setup() {
-    let selected = ref(["1"]);
+    const treeselect = ref();
+    let selected = ref([]);
     let treeOrientation = ref("0");
     let treeData = reactive({
       label: "root",
@@ -51,9 +53,21 @@ export default defineComponent({
       ],
     });
 
+    onMounted(() => {
+      if (treeselect.value) {
+        console.log("treeselect exists");
+        treeselect.value.selectNodes(["2"]);
+      }
+
+      setTimeout(() => {
+        treeselect.value.selectNodes(["2", "3", 5, 8]);
+      }, 5000);
+    });
+
     return {
       treeData,
       selected,
+      treeselect,
     };
   },
 });
