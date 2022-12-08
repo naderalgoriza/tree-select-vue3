@@ -753,7 +753,9 @@ export default {
         internalValue = this.forest.selectedNodeIds.filter((id) => {
           const node = this.getNode(id);
           if (node.isLeaf) return true;
-          return node.children.length === 0;
+          if (node.children) {
+            return node.children.length === 0;
+          } else return true;
         });
       } else if (this.valueConsistsOf === ALL_WITH_INDETERMINATE) {
         const indeterminateNodeIds = [];
@@ -1964,6 +1966,7 @@ export default {
     },
 
     select(node) {
+      if (!node) return;
       if (this.disabled || node.isDisabled) {
         return;
       }
