@@ -179,7 +179,7 @@ const Option = {
           countClassName,
         });
       return (
-        <label id="node-label" class={labelClassName}>
+        <label class={labelClassName}>
           {node.label}
           {shouldShowCount && <span class={countClassName}>({count})</span>}
         </label>
@@ -259,9 +259,11 @@ const Option = {
     handleMouseDownOnLabelContainer: onLeftClick(
       function handleMouseDownOnLabelContainer(e) {
         const { instance, node } = this;
+        const classList = [...e.target.classList];
+        const isNodeLabel = classList.includes("vue-treeselect__label");
 
         if (instance.enableSelectionFromCheckboxOnly) {
-          if (node.isBranch && e.target.id === "node-label") {
+          if (node.isBranch && isNodeLabel) {
             instance.toggleExpanded(node);
           } else {
             instance.select(node);
