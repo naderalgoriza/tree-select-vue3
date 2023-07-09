@@ -51,6 +51,7 @@ export default {
 
   mounted() {
     const { instance } = this;
+    console.log("instance", instance);
 
     if (instance.menu.isOpen) this.$nextTick(this.onMenuOpen);
   },

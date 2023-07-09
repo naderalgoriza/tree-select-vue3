@@ -3,7 +3,7 @@
     <vue-treeselect
       ref="treeselect"
       :multiple="true"
-      :options="[treeData]"
+      :options="treeData"
       noResultsText="No results..."
       placeholder="Select items..."
       v-model="selected"
@@ -11,8 +11,10 @@
       :autoSelectDescendants="true"
       :autoDeselectDescendants="true"
       :flat="false"
-      :searchable="false"
+      :searchable="true"
       :show-count="true"
+      :normalizer="normalizer"
+      :enableSelectionFromCheckboxOnly="true"
     >
     </vue-treeselect>
     <div>Selected: {{ selected }}</div>
@@ -20,54 +22,30 @@
 </template>
 <script>
 import { defineComponent, ref, reactive, onMounted } from "vue";
+import { industriesOptions } from "./options";
 
 export default defineComponent({
   setup() {
     const treeselect = ref();
     let selected = ref([]);
     let treeOrientation = ref("0");
-    let treeData = reactive({
-      label: "root",
-      expand: true,
-      id: "1",
-      children: [
-        { label: "child 1", id: "2" },
-        { label: "child 2", id: "3" },
-        {
-          label: "subparent 1",
-          id: 4,
-          expand: false,
-          children: [
-            { label: "subchild 1", id: 5 },
-            {
-              label: "subchild 2",
-              id: 6,
-              expand: false,
-              children: [
-                { label: "subchild 11", id: 7 },
-                { label: "subchild 22", id: 8 },
-              ],
-            },
-          ],
-        },
-      ],
-    });
 
-    onMounted(() => {
-      if (treeselect.value) {
-        console.log("treeselect exists");
-        treeselect.value.selectNodes(["2"]);
+    const normalizer = (option) => {
+      const newOption = {
+        ...option,
+        label: option.nameAr,
+      };
+      if (option.children?.length === 0) {
+        delete newOption.children;
       }
-
-      setTimeout(() => {
-        treeselect.value.selectNodes(["2", "3", 5, 8]);
-      }, 5000);
-    });
+      return newOption;
+    };
 
     return {
-      treeData,
+      treeData: industriesOptions,
       selected,
       treeselect,
+      normalizer,
     };
   },
 });

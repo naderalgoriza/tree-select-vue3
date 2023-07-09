@@ -324,6 +324,14 @@ export default {
     },
 
     /**
+     * only enable selection from checkbox?
+     */
+    enableSelectionFromCheckboxOnly: {
+      type: Boolean,
+      default: false,
+    },
+
+    /**
      * Whether to enable flat mode or not. Non-flat mode (default) means:
      *   - Whenever a branch node gets checked, all its children will be checked too
      *   - Whenever a branch node has all children checked, the branch node itself will be checked too
