@@ -128,14 +128,7 @@ const Option = {
       if (instance.single) return null;
       if (instance.disableBranchNodes && node.isBranch) return null;
 
-      return (
-        <div
-          class="vue-treeselect__checkbox-container"
-          onMousedown={this.handleMouseDownOnCheckboxContainer}
-        >
-          {children}
-        </div>
-      );
+      return <div class="vue-treeselect__checkbox-container">{children}</div>;
     },
 
     renderCheckbox() {
@@ -186,7 +179,7 @@ const Option = {
           countClassName,
         });
       return (
-        <label class={labelClassName}>
+        <label id="node-label" class={labelClassName}>
           {node.label}
           {shouldShowCount && <span class={countClassName}>({count})</span>}
         </label>
@@ -264,11 +257,11 @@ const Option = {
     ),
 
     handleMouseDownOnLabelContainer: onLeftClick(
-      function handleMouseDownOnLabelContainer() {
+      function handleMouseDownOnLabelContainer(e) {
         const { instance, node } = this;
 
         if (instance.enableSelectionFromCheckboxOnly) {
-          if (node.isBranch) {
+          if (node.isBranch && e.target.id === "node-label") {
             instance.toggleExpanded(node);
           } else {
             instance.select(node);
@@ -286,14 +279,6 @@ const Option = {
         // } else {
         //   instance.select(node)
         // }
-      }
-    ),
-    handleMouseDownOnCheckboxContainer: onLeftClick(
-      function handleMouseDownOnCheckboxContainer() {
-        const { instance, node } = this;
-        if (instance.enableSelectionFromCheckboxOnly) {
-          instance.select(node);
-        }
       }
     ),
 
