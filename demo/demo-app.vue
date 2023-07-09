@@ -15,6 +15,7 @@
       :show-count="true"
       :normalizer="normalizer"
       :enableSelectionFromCheckboxOnly="true"
+      valueConsistsOf="LEAF_PRIORITY"
     >
     </vue-treeselect>
     <div>Selected: {{ selected }}</div>
